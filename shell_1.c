@@ -1,34 +1,56 @@
-#define _GNU_SOURCE
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-/**
- * main - shell
- * @length: len
- * @s: char
- *
- * Return: 0
- */
-int input(char *s, int length);
+#include <string.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include "shell.h"
 
+/**
+ * main - simple command-line argument interpreter
+ *
+ * Return: Always 0.
+ */
 int main(void)
 {
-	char *buffer;
-	size_t bufsize = 32;
-	size_t characters = 0;
+	pid_t child_pid;
+	size_t len = 0;
+	int get;
+	char *ch;
+	char *argv[] = {"/bin", NULL};
 
-	while (true)
+	while (1)
 	{
-		buffer = (char *)malloc(bufsize * sizeof(char));
-		if (buffer == NULL)
+		printf("($) ");
+		get = getline(&ch, &len, stdin);
+		if (get < 0)
 		{
-			perror("Unable to allocate buffer");
-			exit(1);
+			printf("\n");
+			return (0);
 		}
-		printf("$ ");
-		getline(&buffer, &characters, stdin);
-		printf("%s\n", buffer);
-
+		if (strcmp(ch, "exit\n") == 0)
+			exit(EXIT_SUCCESS);
+		strtok(ch, "\n");
+		child_pid = fork();
+		if (child_pid == -1)
+		{
+			perror("./shell");
+			continue;
+		}
+		if (child_pid == 0)
+		{
+			if (execve(ch, argv, NULL) < 0)
+			{
+				perror("./shell");
+				return (0);
+			}
+		}
+		else
+		{
+			wait(NULL);
+			continue;
+		}
 	}
+	free(ch);
 	return (0);
 }

@@ -2,7 +2,7 @@
 
 /**
  * execute - execute the commands
- * @parse: is a char
+ * @parse: is a char array of pointers
  * Return: Always 0.
  */
 
@@ -16,7 +16,7 @@ int execute(char **parse)
 	{
 		if (execve(parse[0], parse, NULL) == -1)
 		{
-			perror("Error:");
+			perror(parse[0]);
 			exit(1);
 		}
 	}

@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * _putchar - writes the character c to stdout
+ * _putchar - writes the character c to standard output
  * @c: The character to print
  *
  * Return: On success 1.
@@ -12,44 +12,26 @@ int _putchar(char c)
 	return (write(1, &c, 1));
 }
 
-void print_error(int i, char *s, char **argv)
-{
-	char *buf = str_concat(s, ": ");
-	char *number = convert(i, 10);
-
-	buf = str_concat(buf, number);
-	buf = str_concat(buf, ": ");
-	buf = str_concat(buf, argv[0]);
-	buf = str_concat(buf, ": not found\n");
-
-	if (errno == ENOENT || errno == ENOTDIR)
-	{
-		write(2, buf, _strlen(buf));
-	}
-	else
-		perror(s);
-}
 
 /**
  * print_prompt - prints a prompt for the shell
  */
 void print_prompt(void)
 {
-	char *s = "($) ";
-	write(2, s, 5);
+	char *s = "$ ";
+
+	write(1, s, 2);
 }
 
 /**
- * print_env - replicates the bash env function
+ * _puts - prints a string to standard output
+ * @str: pointer to the string to print
  */
-void print_env(void)
+void _puts(char *str)
 {
-	int i, j;
+	int i;
 
-	for (i = 0; environ[i]; i++)
-	{
-		for (j = 0; environ[i][j]; j++)
-			_putchar(environ[i][j]);
-		_putchar('\n');
-	}
+	for (i = 0; str[i] != '\0'; i++)
+		_putchar(str[i]);
+	_putchar('\n');
 }

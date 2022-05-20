@@ -19,7 +19,7 @@ int main(void)
 	char *ch;
 	char *argv[] = {"/bin", NULL};
 
-	while (1)
+	while (get != EOF)
 	{
 		printf("($) ");
 		get = getline(&ch, &len, stdin);

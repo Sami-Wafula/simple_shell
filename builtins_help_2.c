@@ -1,75 +1,45 @@
 #include "shell.h"
 
-char **_copyenv(void);
-void free_env(void);
-char **_getenv(const char *var);
+void help_env(void);
+void help_setenv(void);
+void help_unsetenv(void);
+void help_history(void);
 
 /**
- * _copyenv - Creates a copy of the environment.
- *
- * Return: If an error occurs - NULL.
- *         O/w - a double pointer to the new copy.
+ * help_env - Displays information on the shellby builtin command 'env'.
  */
-char **_copyenv(void)
+void help_env(void)
 {
-	char **new_environ;
-	size_t size;
-	int index;
+	char *msg = "env: env\n\tPrints the current environment.\n";
 
-	for (size = 0; environ[size]; size++)
-		;
-
-	new_environ = malloc(sizeof(char *) * (size + 1));
-	if (!new_environ)
-		return (NULL);
-
-	for (index = 0; environ[index]; index++)
-	{
-		new_environ[index] = malloc(_strlen(environ[index]) + 1);
-
-		if (!new_environ[index])
-		{
-			for (index--; index >= 0; index--)
-				free(new_environ[index]);
-			free(new_environ);
-			return (NULL);
-		}
-		_strcpy(new_environ[index], environ[index]);
-	}
-	new_environ[index] = NULL;
-
-	return (new_environ);
+	write(STDOUT_FILENO, msg, _strlen(msg));
 }
 
 /**
- * free_env - Frees the the environment copy.
+ * help_setenv - Displays information on the shellby builtin command 'setenv'.
  */
-void free_env(void)
+void help_setenv(void)
 {
-	int index;
+	char *msg = "setenv: setenv [VARIABLE] [VALUE]\n\tInitializes a new";
 
-	for (index = 0; environ[index]; index++)
-		free(environ[index]);
-	free(environ);
+	write(STDOUT_FILENO, msg, _strlen(msg));
+	msg = "environment variable, or modifies an existing one.\n\n";
+	write(STDOUT_FILENO, msg, _strlen(msg));
+	msg = "\tUpon failure, prints a message to stderr.\n";
+	write(STDOUT_FILENO, msg, _strlen(msg));
 }
 
 /**
- * _getenv - Gets an environmental variable from the PATH.
- * @var: The name of the environmental variable to get.
- *
- * Return: If the environmental variable does not exist - NULL.
- *         Otherwise - a pointer to the environmental variable.
+ * help_unsetenv - Displays information on the shellby builtin command
+ * 'unsetenv'.
  */
-char **_getenv(const char *var)
+void help_unsetenv(void)
 {
-	int index, len;
+	char *msg = "unsetenv: unsetenv [VARIABLE]\n\tRemoves an ";
 
-	len = _strlen(var);
-	for (index = 0; environ[index]; index++)
-	{
-		if (_strncmp(var, environ[index], len) == 0)
-			return (&environ[index]);
-	}
-
-	return (NULL);
+	write(STDOUT_FILENO, msg, _strlen(msg));
+	msg = "environmental variable.\n\n\tUpon failure, prints a ";
+	write(STDOUT_FILENO, msg, _strlen(msg));
+	msg = "message to stderr.\n";
+	write(STDOUT_FILENO, msg, _strlen(msg));
 }

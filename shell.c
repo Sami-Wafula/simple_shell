@@ -104,6 +104,8 @@ void handle_pipe(void)
 							status = execute(args[i++], NULL);
 					free(args);
 				}
+				if ((cmds, "exit\n") == 0)
+				exit(EXIT_SUCCESS);
 			}
 			n = 0;
 		}

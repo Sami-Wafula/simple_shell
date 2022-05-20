@@ -12,17 +12,36 @@ int _putchar(char c)
 	return (write(1, &c, 1));
 }
 
-void print_prompt(void)
+void print_error(int i, char *s, char **argv)
 {
-	char *s = "(s) ";
+	char *buf = str_concat(s, ": ");
+	char *number = convert(i, 10);
 
-	while (*s)
+	buf = str_concat(buf, number);
+	buf = str_concat(buf, ": ");
+	buf = str_concat(buf, argv[0]);
+	buf = str_concat(buf, ": not found\n");
+
+	if (errno == ENOENT || errno == ENOTDIR)
 	{
-		_putchar(*s);
-		s++;
+		write(2, buf, _strlen(buf));
 	}
+	else
+		perror(s);
 }
 
+/**
+ * print_prompt - prints a prompt for the shell
+ */
+void print_prompt(void)
+{
+	char *s = "($) ";
+	write(2, s, 5);
+}
+
+/**
+ * print_env - replicates the bash env function
+ */
 void print_env(void)
 {
 	int i, j;

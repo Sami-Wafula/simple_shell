@@ -1,12 +1,12 @@
 #include "holberton.h"
 
 /**
- * execute - execute the commands
- * @parse: is a char array of pointers
+ * main - execve example
+ *
  * Return: Always 0.
  */
 
-int execute(char **parse)
+void execute(char **parse)
 {
 	pid_t pid;
 	int status;
@@ -14,10 +14,10 @@ int execute(char **parse)
 	pid = fork();
 	if (pid == 0)
 	{
+		write(1, ":D", 2);
 		if (execve(parse[0], parse, NULL) == -1)
 		{
-			perror(parse[0]);
-			exit(1);
+			perror("Error:");
 		}
 	}
 	else if (pid > 0)
@@ -25,7 +25,8 @@ int execute(char **parse)
 		wait(&status);
 	}
 	else
+	{
 		perror("Error:");
-
-	return (0);
+	}
+	/*return (parse);*/
 }

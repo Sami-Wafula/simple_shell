@@ -1,11 +1,9 @@
 #include "holberton.h"
 
 /**
- * _realloc - reallocate memory
- * @ptr: void variable pointer
- * @old_size: integer
- * @new_size: integer
- * Return: Null
+ *
+ *
+ *
  */
 
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
@@ -45,36 +43,37 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 }
 
 /**
- * splits - function that create tokens
- * @line: is a char
- * @delim: is a char
- * Return: double pointer
+ *
  */
 
-char **splits(char *line, char *delim)
+char **splits(char *line)
 {
+	char *token;
 	char **pptoken;
-	int buf = 1024, i = 0;
+	int buf = 1024, i = 0, j;
+	char *delim;
 
-	pptoken = malloc(sizeof(char *) * buf);
-	if (!pptoken)
-		exit(99);
+	delim = " ";
+	pptoken = malloc(sizeof(char*) * buf);
+	token = strtok(line, delim);
 
-	pptoken[i] = strtok(line, delim);
-	i++;
-	while (1)
+	while (token != NULL)
 	{
-		pptoken[i] = strtok(NULL, delim);
+		pptoken[i] = token;
+		i++;
+
 		if (i >= buf)
 		{
 			buf += buf;
-			pptoken = _realloc(pptoken, buf, buf * (sizeof(char *)));
-			if (!pptoken)
-				exit(98);
+			pptoken = _realloc(pptoken, buf, buf * (sizeof(char*)));
 		}
-		if (pptoken[i] == NULL)
-			break;
-		i++;
+
+		token = strtok(NULL, delim);
 	}
+	pptoken[i] = NULL;
+
+	for (j = 0;  pptoken[j]; j++)
+		printf("%s\n", pptoken[j]);
+
 	return (pptoken);
 }

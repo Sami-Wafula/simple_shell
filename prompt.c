@@ -1,23 +1,20 @@
 #include "holberton.h"
 
 /**
- * read_line - reads the command line
- * Return: line
+ *
+ *
  */
 
 char *read_line(void)
 {
 	char *line = NULL;
-	size_t size = 0;
+	size_t size = 1024;
 	int ret = 0;
 
-	if (getline(&line, &size, stdin) == -1)
-	{
-		free(line);
-		exit(-1);
-	}
+	printf("$ ");
+	getline(&line, &size, stdin);
 	ret = strlen(line);
 	line[ret - 1] = '\0';
-
+	printf("%s", line);
 	return (line);
 }

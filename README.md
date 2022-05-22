@@ -47,3 +47,7 @@ Handling variables replacement, $? variable and $$ variable<br>
 
 14.Comments
 Handling comments(#)
+
+15.File as input
+Usage: simple_shell[filename]
+The shell can take a file as a command line argument. The file should contain all commands that the shell should run before exiting. The file should contain one command per line. In this mode, the shell should not print a prompt and should not read from stdin

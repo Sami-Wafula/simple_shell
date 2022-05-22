@@ -13,3 +13,8 @@ If \fBshellby\fR is invoked with standard input not connected to a terminal, it 
 
 If \fBshellby\fR is invoked with standard input connected to a terminal (determined by \fIisatty(3)\fR), an \fIinteractive\fR shell is opened.
 When executing interactively, \fBshellby\fR displays the prompt \fI$ \fR when it is ready to read a command.
+
+Alternatively, if command line arguments are supplied upon invocation, \fBshellby\fR treats the first argument as a file from which to read commands.
+The supplied file should contain one command per line.
+.B Shellby\fR runs each of the commands contained in the file in order before exiting.
+.in

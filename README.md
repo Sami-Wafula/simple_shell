@@ -26,3 +26,6 @@ Simple shell 0.2+ without using strtok.
 7.Simple shell 0.4.1
 Simple shell 0.4+ that handles arguments for built-in exit
 Usage: exit status, where status is an integer used to exit the shell.
+
+8.setenv, unsetenv
+Implementation of setenv and unsetenv commands

@@ -32,3 +32,6 @@ Implementation of setenv and unsetenv commands
 
 9.cd
 Implementation of builtin cd command
+
+10.;
+Handling command separator ;

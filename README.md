@@ -44,3 +44,6 @@ Handling builtin alias command
 
 13.Variables
 Handling variables replacement, $? variable and $$ variable<br>
+
+14.Comments
+Handling comments(#)

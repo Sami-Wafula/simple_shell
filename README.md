@@ -7,3 +7,6 @@ A beautiful code that passes the Betty checks
 
 1.Simple shell 0.1
 A UNIX command line interpreter.
+
+2.Simple shell 0.2
+Handles PATH. Fork must not be called if the command doesn't exist.

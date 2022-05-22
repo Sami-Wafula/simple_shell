@@ -29,8 +29,19 @@ This \fBenvironment\fR is an array of \fIname-value\fR strings describing variab
 
 .in
 
-.B Environment
+.B Environmenit
 .in +2n
 Upon invocation, \fBshellby\fR receives and copies the environment of the parent process in which it was exeucted.
 This \fBenvironment\fR is an array of \fIname-value\fR strings describing variables in the format \fINAME=VALUE\fR.
 .in
+
+.B Command Execution
+.in +2n
+After receiving a command, \fBshellby\fR tokenizes it into words using \fB" "\fR as a delimiter.
+The first word is considered the command and all remaining words are considered arguments to that command.
+.B Shellby\fR then proceeds with the following actions:
+
+.RS
+1. If the first character of the command is neither a slash (\fI\\\fR) nor dot (\fI.\fR), the shell searches for it in the list of shell builtins.
+If there exists a shell builtin by that name, the builtin is invoked.
+.RE

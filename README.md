@@ -35,3 +35,6 @@ Implementation of builtin cd command
 
 10.;
 Handling command separator ;
+
+11.&& and ||
+Handling && and || shell logical operators

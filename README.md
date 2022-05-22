@@ -29,3 +29,6 @@ Usage: exit status, where status is an integer used to exit the shell.
 
 8.setenv, unsetenv
 Implementation of setenv and unsetenv commands
+
+9.cd
+Implementation of builtin cd command

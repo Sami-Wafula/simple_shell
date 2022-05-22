@@ -16,3 +16,6 @@ Implementation of exit that exists in the shell. You don't have to handle any ar
 
 4.Simple shell 1.0
 Implementation of env built-in that prints current environment.
+
+5.Simple shell 0.1.1
+Creating our own getline function using static variables. Use a buffer to read many chars at once and call the least possible read system call.

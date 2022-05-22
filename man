@@ -18,3 +18,19 @@ Alternatively, if command line arguments are supplied upon invocation, \fBshellb
 The supplied file should contain one command per line.
 .B Shellby\fR runs each of the commands contained in the file in order before exiting.
 .in
+
+.B Environment
+
+.in +2n
+
+Upon invocation, \fBshellby\fR receives and copies the environment of the parent process in which it was exeucted.
+
+This \fBenvironment\fR is an array of \fIname-value\fR strings describing variables in the format \fINAME=VALUE\fR.
+
+.in
+
+.B Environment
+.in +2n
+Upon invocation, \fBshellby\fR receives and copies the environment of the parent process in which it was exeucted.
+This \fBenvironment\fR is an array of \fIname-value\fR strings describing variables in the format \fINAME=VALUE\fR.
+.in

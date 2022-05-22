@@ -10,3 +10,6 @@
 .in +2n
 \fBShellby\fR can be invoked both interactively and non-interactively.
 If \fBshellby\fR is invoked with standard input not connected to a terminal, it reads and executes received commands in order.
+
+If \fBshellby\fR is invoked with standard input connected to a terminal (determined by \fIisatty(3)\fR), an \fIinteractive\fR shell is opened.
+When executing interactively, \fBshellby\fR displays the prompt \fI$ \fR when it is ready to read a command.

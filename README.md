@@ -41,3 +41,6 @@ Handling && and || shell logical operators
 
 12.alias
 Handling builtin alias command
+
+13.Variables
+Handling variables replacement, $? variable and $$ variable<br>

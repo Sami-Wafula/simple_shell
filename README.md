@@ -9,4 +9,7 @@ A beautiful code that passes the Betty checks
 A UNIX command line interpreter.
 
 2.Simple shell 0.2
-Handles PATH. Fork must not be called if the command doesn't exist.
+Handles PATH.Fork must not be called if the command doesn't exist.
+
+3.Simple shell 0.4
+Implementation of exit that exists in the shell. You don't have to handle any argument to exit

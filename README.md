@@ -19,3 +19,6 @@ Implementation of env built-in that prints current environment.
 
 5.Simple shell 0.1.1
 Creating our own getline function using static variables. Use a buffer to read many chars at once and call the least possible read system call.
+
+6.Simple shell 0.2.1
+Simple shell 0.2+ without using strtok.

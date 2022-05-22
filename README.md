@@ -38,3 +38,6 @@ Handling command separator ;
 
 11.&& and ||
 Handling && and || shell logical operators
+
+12.alias
+Handling builtin alias command
